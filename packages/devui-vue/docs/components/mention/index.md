@@ -18,53 +18,64 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const suggestions = [
-  {
-    id: 1,
-    value: 'javascript',
-  },
-  {
-    id: 2,
-    value: 'Vue',
-  },
-  {
-    id: 3,
-    value: 'React',
-  },
-  {
-    id: 4,
-    value: 'Angular',
-  },
-  {
-    id: 5,
-    value: 'Html',
-  },
-  {
-    id: 6,
-    value: 'Css',
-  },
-  {
-    id: 7,
-    value: 'Koa',
-  },
-  {
-    id: 8,
-    value: 'Express',
-  },
-  {
-    id: 9,
-    value: 'Nuxt',
-  },
-  {
-    id: 10,
-    value: 'Next',
-  },
-];
+<script>
+import { defineComponent, ref } from 'vue';
 
-const handleSelect = (val) => {
-  console.log(val);
-};
+export default defineComponent({
+  setup() {
+    const suggestions = ref([
+      {
+        id: 1,
+        value: 'Javascript',
+      },
+      {
+        id: 2,
+        value: 'Vue',
+      },
+      {
+        id: 3,
+        value: 'React',
+      },
+      {
+        id: 4,
+        value: 'Angular',
+      },
+      {
+        id: 5,
+        value: 'Html',
+      },
+      {
+        id: 6,
+        value: 'Css',
+      },
+      {
+        id: 7,
+        value: 'Koa',
+      },
+      {
+        id: 8,
+        value: 'Express',
+      },
+      {
+        id: 9,
+        value: 'Nuxt',
+      },
+      {
+        id: 10,
+        value: 'Next',
+      },
+    ]);
+
+    const handleSelect = (val) => {
+      console.log(val);
+    };
+
+    return {
+      suggestions,
+      handleSelect,
+    };
+  },
+});
 </script>
 ```
 
@@ -82,50 +93,60 @@ const handleSelect = (val) => {
   </div>
 </template>
 
-<script lang="ts" setup>
-const triggers = ['@', '#'];
-const suggestions = [
-  {
-    id: 1,
-    value: 'javascript',
+<script>
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const triggers = ref(['@', '#']);
+    const suggestions = ref([
+      {
+        id: 1,
+        value: 'Javascript',
+      },
+      {
+        id: 2,
+        value: 'Vue',
+      },
+      {
+        id: 3,
+        value: 'React',
+      },
+      {
+        id: 4,
+        value: 'Angular',
+      },
+      {
+        id: 5,
+        value: 'Html',
+      },
+      {
+        id: 6,
+        value: 'Css',
+      },
+      {
+        id: 7,
+        value: 'Koa',
+      },
+      {
+        id: 8,
+        value: 'Express',
+      },
+      {
+        id: 9,
+        value: 'Nuxt',
+      },
+      {
+        id: 10,
+        value: 'Next',
+      },
+    ]);
+    return {
+      triggers,
+      suggestions,
+    };
   },
-  {
-    id: 2,
-    value: 'Vue',
-  },
-  {
-    id: 3,
-    value: 'React',
-  },
-  {
-    id: 4,
-    value: 'Angular',
-  },
-  {
-    id: 5,
-    value: 'Html',
-  },
-  {
-    id: 6,
-    value: 'Css',
-  },
-  {
-    id: 7,
-    value: 'Koa',
-  },
-  {
-    id: 8,
-    value: 'Express',
-  },
-  {
-    id: 9,
-    value: 'Nuxt',
-  },
-  {
-    id: 10,
-    value: 'Next',
-  },
-];
+});
 </script>
 ```
 
@@ -143,69 +164,78 @@ const suggestions = [
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue';
+<script>
+import { defineComponent, ref } from 'vue';
 
-const loading = ref(true);
-const suggestions = ref([]);
+export default defineComponent({
+  setup() {
+    const loading = ref(true);
+    const suggestions = ref([]);
 
-const onSearchChange = (val: string) => {
-  loading.value = true;
-  fetchSuggestions(val, (result) => {
-    suggestions.value = result;
-    loading.value = false;
-  });
-};
-const fetchSuggestions = (value: string, callback: (suggestions: string[]) => void) => {
-  const users = [
-    {
-      id: 1,
-      value: 'javascript',
-    },
-    {
-      id: 2,
-      value: 'Vue',
-    },
-    {
-      id: 3,
-      value: 'React',
-    },
-    {
-      id: 4,
-      value: 'Angular',
-    },
-    {
-      id: 5,
-      value: 'Html',
-    },
-    {
-      id: 6,
-      value: 'Css',
-    },
-    {
-      id: 7,
-      value: 'Koa',
-    },
-    {
-      id: 8,
-      value: 'Express',
-    },
-    {
-      id: 9,
-      value: 'Nuxt',
-    },
-    {
-      id: 10,
-      value: 'Next',
-    },
-  ];
-  setTimeout(() => {
-    const result = users.filter((item) => {
-      return item.value.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1;
-    });
-    return callback(result);
-  }, 1000);
-};
+    const onSearchChange = (val: string) => {
+      loading.value = true;
+      fetchSuggestions(val, (result) => {
+        suggestions.value = result;
+        loading.value = false;
+      });
+    };
+    const fetchSuggestions = (value: string, callback: (suggestions: string[]) => void) => {
+      const users = [
+        {
+          id: 1,
+          value: 'Javascript',
+        },
+        {
+          id: 2,
+          value: 'Vue',
+        },
+        {
+          id: 3,
+          value: 'React',
+        },
+        {
+          id: 4,
+          value: 'Angular',
+        },
+        {
+          id: 5,
+          value: 'Html',
+        },
+        {
+          id: 6,
+          value: 'Css',
+        },
+        {
+          id: 7,
+          value: 'Koa',
+        },
+        {
+          id: 8,
+          value: 'Express',
+        },
+        {
+          id: 9,
+          value: 'Nuxt',
+        },
+        {
+          id: 10,
+          value: 'Next',
+        },
+      ];
+      setTimeout(() => {
+        const result = users.filter((item) => {
+          return item.value.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1;
+        });
+        return callback(result);
+      }, 1000);
+    };
+    return {
+      suggestions,
+      loading,
+      onSearchChange,
+    };
+  },
+});
 </script>
 ```
 
@@ -223,25 +253,34 @@ const fetchSuggestions = (value: string, callback: (suggestions: string[]) => vo
   </div>
 </template>
 
-<script lang="ts" setup>
-const suggestions = [
-  {
-    id: 1,
-    value: 'javascript',
+<script>
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const suggestions = ref([
+      {
+        id: 1,
+        value: 'Javascript',
+      },
+      {
+        id: 2,
+        value: 'Vue',
+      },
+      {
+        id: 3,
+        value: 'React',
+      },
+      {
+        id: 4,
+        value: 'Angular',
+      },
+    ]);
+    return {
+      suggestions,
+    };
   },
-  {
-    id: 2,
-    value: 'Vue',
-  },
-  {
-    id: 3,
-    value: 'React',
-  },
-  {
-    id: 4,
-    value: 'Angular',
-  },
-];
+});
 </script>
 ```
 
@@ -264,37 +303,46 @@ const suggestions = [
   </div>
 </template>
 
-<script lang="ts" setup>
-const suggestions = [
-  {
-    name: 'C#',
-    id: 1,
+<script>
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const suggestions = ref([
+      {
+        name: 'C#',
+        id: 1,
+      },
+      {
+        name: 'C',
+        id: 2,
+      },
+      {
+        name: 'C++',
+        id: 3,
+      },
+      {
+        name: 'Python',
+        id: 4,
+      },
+      {
+        name: 'Java',
+        id: 5,
+      },
+      {
+        name: 'Javascript',
+        id: 6,
+      },
+      {
+        name: 'Go',
+        id: 7,
+      },
+    ]);
+    return {
+      suggestions,
+    };
   },
-  {
-    name: 'C',
-    id: 2,
-  },
-  {
-    name: 'C++',
-    id: 3,
-  },
-  {
-    name: 'Python',
-    id: 4,
-  },
-  {
-    name: 'Java',
-    id: 5,
-  },
-  {
-    name: 'JavaScript',
-    id: 6,
-  },
-  {
-    name: 'Go',
-    id: 7,
-  },
-];
+});
 </script>
 ```
 
